@@ -1,0 +1,43 @@
+
+.red {
+  color: red;
+}
+
+.blue {
+  color: blue;
+}
+
+.bloon {
+    position: relative;
+    -webkit-animation: floatUp 5s 1 normal ease-out;
+    -moz-animation: floatUp 5s 1 normal ease-out;
+    animation: floatUp 5s 1 normal ease-out;
+}
+
+/* animate the drops*/
+@-webkit-keyframes floatUp {
+    0% {
+      top: 900px;
+    }
+    100% {
+      top: 0px;
+    }
+}
+
+@-moz-keyframes floatUp {
+    0% {
+      top: 900px;
+    }
+    100% {
+      top: 0px;
+    }
+}
+
+@keyframes floatUp {
+    0% {
+      top: 900px;
+    }
+    100% {
+      top: 0px;
+    }
+}
