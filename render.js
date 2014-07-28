@@ -1,6 +1,24 @@
 /** @jsx React.DOM */
 
+function randRange( minNum, maxNum) {
+  return (Math.floor(Math.random() * (maxNum - minNum + 1)) + minNum);
+}
+
+function randFloatRange( minNum, maxNum) {
+  return (Math.random() * (maxNum - minNum + 1) + minNum);
+}
+
+
+
+
+
 var GameArea = React.createClass({
+  getInitialState: function() {
+    return ({speed: 5});
+  },
+  incrementSpeed: function() {
+    this.setState({'speed': this.state.speed-1});
+  },
   makeBalloons: function() {
     var balloons = [];
     for (var i=0; i < this.props.data.length; i++) {
@@ -10,6 +28,13 @@ var GameArea = React.createClass({
                     message={thisBalloon.message} />)
     }
     return balloons
+  },
+  componentWillMount: function(){
+    var tid = setInterval(this.incrementSpeed, 10000);
+    var gameTimer = setTimeout(this.endGame(tid), 60000);
+  },
+  endGame: function(timerId) {
+    clearTimeout(timerId);
   },
   render: function(){
       var someBloons = this.makeBalloons();
@@ -21,6 +46,10 @@ var GameArea = React.createClass({
   }
 });
 
+
+
+
+
 var Balloon = React.createClass({
   render: function() {
     var cx = React.addons.classSet;
@@ -29,11 +58,20 @@ var Balloon = React.createClass({
       'blue': this.props.color==='blue',
       'bloon': true
     });
+    var spanStyle = {
+      left: randRange(0,900),
+      WebkitAnimationDuration: String(randFloatRange(1,4))+'s'
+    }
     return (
-    <span className={classes} >{this.props.message}</span>
+      <div style={spanStyle} className={classes}>
+        <span className="content">{this.props.message}</span>
+      </div>
     );
   }
 });
+
+
+
 
 var data = [
             {message: 'def function_name():',
@@ -45,5 +83,8 @@ var data = [
             {message: 'cat=100',
             color: 'red'}
           ];
+
+
+
 
 React.renderComponent(<GameArea data={data} />, document.getElementById('game'));

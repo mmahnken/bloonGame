@@ -1,17 +1,38 @@
+div#game {
+    background: green;
+    width: auto;
+    height: 1000px;
+}
+
+.content {
+  max-width: 100px;
+  font-family: Courier New, monospace;
+  position: absolute;
+  font-size: 15px;
+  color: black;
+  padding-left: 10px;
+  top: 40px;
+}
 
 .red {
-  color: red;
+  background: transparent url('/balloon-purple-aj.png') no-repeat;
+  background-size: 120px 240px;
 }
 
 .blue {
-  color: blue;
+  background: transparent url('balloon-yellow-aj.png') no-repeat;
+  background-size: 120px 240px;
 }
 
 .bloon {
+  float:left;
+  display: block;
+  width: 120px;
+  height: 240px;
     position: relative;
-    -webkit-animation: floatUp 5s 1 normal ease-out;
-    -moz-animation: floatUp 5s 1 normal ease-out;
-    animation: floatUp 5s 1 normal ease-out;
+    -webkit-animation: floatUp 1 normal ease-out;
+    -moz-animation: floatUp 1 normal ease-out;
+    animation: floatUp 1 normal ease-out;
 }
 
 /* animate the drops*/
